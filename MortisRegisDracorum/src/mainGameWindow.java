@@ -71,6 +71,19 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			repaint();
 			
 		}
+		
+		if(string == "character_select"){
+			mainPanel.removeAll();
+			mainPanel.setLayout(new GridLayout(4,2));
+			JLabel[] character_labels = new JLabel[4];
+			character_labels[0].setText("Warrior");
+			character_labels[1].setText("Paladin");
+			character_labels[2].setText("Mage");
+			character_labels[3].setText("Rogue");
+			for(int i = 0; i<4; i++){
+			
+			}
+		}
 	
 	}
 
