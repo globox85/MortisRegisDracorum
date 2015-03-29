@@ -26,7 +26,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		this.setSize(1280,720);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setTitle("Mortis Regis Dracorum");
+		this.setTitle("UNTITLED GAME");
 	}
 
 	public static void main(String[] args) {
@@ -74,15 +74,42 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		
 		if(string == "character_select"){
 			mainPanel.removeAll();
-			mainPanel.setLayout(new GridLayout(4,2));
+			mainPanel.setLayout(new GridLayout(1,4));
 			JLabel[] character_labels = new JLabel[4];
+			JLabel[] character_labels_img = new JLabel[4];
+			JPanel[] character_panels = new JPanel[4];
+			
+			
+			for(int i = 0; i<4; i++){
+				character_panels[i] = new JPanel();
+				character_panels[i].setLayout(new GridLayout(3,1));
+			
+			}
+			
+			for(int i = 0; i<4; i++){
+				character_labels[i] = new JLabel();
+				character_labels_img[i] = new JLabel();
+			
+			}
 			character_labels[0].setText("Warrior");
 			character_labels[1].setText("Paladin");
 			character_labels[2].setText("Mage");
 			character_labels[3].setText("Rogue");
+			
+			character_labels_img[0].setText("Warrior image placeholder");
+			character_labels_img[1].setText("Paladin image placeholder");
+			character_labels_img[2].setText("Mage image placeholder");
+			character_labels_img[3].setText("Rogue image placeholder");
+			
 			for(int i = 0; i<4; i++){
+				character_panels[i].add(character_labels[i]);
+				character_panels[i].add(character_labels_img[i]);
+				mainPanel.add(character_panels[i]);
 			
 			}
+			
+			validate();
+			repaint();
 		}
 	
 	}
