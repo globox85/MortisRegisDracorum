@@ -7,18 +7,26 @@ public class mainGameWindow extends JFrame implements ActionListener {
 	
 	JPanel mainPanel, emptyPanel1, emptyPanel2;
 	JButton startButton, continueButton;
+	JButton[] character_info_button = new JButton[4];
+	JButton[] character_select_button = new JButton[4];
 	JTextArea introductionText;
 	static mainGameWindow gamewindow;
-	static boolean startPressed = false;
-	GridBagConstraints c = new GridBagConstraints();
+	GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
 
 	public mainGameWindow() {
 		mainPanel = new JPanel();
-		emptyPanel1 = new JPanel();
+		emptyPanel1 = new JPanel(); //Dessa paneler finns enbart för att centrera den tredje
 		emptyPanel2 = new JPanel();
 		startButton = new JButton("Start Game");
 		introductionText = new JTextArea();
 		continueButton = new JButton("Continue");
+		
+		for(int i = 0; i<4; i++){
+			character_info_button[i] = new JButton("Information");
+			character_select_button[i] = new JButton("Choose Class");
+			character_info_button[i].addActionListener(this);
+			character_select_button[i].addActionListener(this);
+		}
 		
 		startButton.addActionListener(this);
 		continueButton.addActionListener(this);
@@ -36,7 +44,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 	}
 
 
-	private void setWindowType(String string, mainGameWindow window) {
+	private void setWindowType(String string, mainGameWindow window) { //Metod som ändrar om fönstret
 		if(string == "main_menu"){
 			mainPanel.setLayout(new GridLayout(1,3));
 			mainPanel.add(emptyPanel1);
@@ -55,7 +63,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			c.gridx = 0;
 			c.gridy = 0;
 			c.ipadx = 1200;
-			c.ipady = 600;
+			c.ipady = 600;  //Alla dessa kommandon är för att få layouten att se "rätt" ut så att knappen och textrutan har rätt storlek.
 			c.gridwidth = GridBagConstraints.REMAINDER;
 			c.anchor = GridBagConstraints.FIRST_LINE_START;
 			mainPanel.add(introductionText,c);
@@ -78,18 +86,22 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			JLabel[] character_labels = new JLabel[4];
 			JLabel[] character_labels_img = new JLabel[4];
 			JPanel[] character_panels = new JPanel[4];
+			JPanel[] character_button_panels = new JPanel[4];
+			
 			
 			
 			for(int i = 0; i<4; i++){
 				character_panels[i] = new JPanel();
 				character_panels[i].setLayout(new GridLayout(3,1));
-			
-			}
-			
-			for(int i = 0; i<4; i++){
 				character_labels[i] = new JLabel();
 				character_labels_img[i] = new JLabel();
-			
+				character_button_panels[i] = new JPanel();
+				character_button_panels[i].setLayout(new GridLayout(1,2));
+				character_button_panels[i].add(character_info_button[i]);
+				character_button_panels[i].add(character_select_button[i]);
+				
+				
+				
 			}
 			character_labels[0].setText("Warrior");
 			character_labels[1].setText("Paladin");
@@ -104,6 +116,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			for(int i = 0; i<4; i++){
 				character_panels[i].add(character_labels[i]);
 				character_panels[i].add(character_labels_img[i]);
+				character_panels[i].add(character_button_panels[i]);
 				mainPanel.add(character_panels[i]);
 			
 			}
@@ -121,6 +134,10 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		}
 		if(e.getSource() == continueButton){
 			gamewindow.setWindowType("character_select", gamewindow);
+		}
+		
+		if(e.getSource() == character_info_button[0]){
+			new ClassInfo("Warrior");
 		}
 		
 	}
