@@ -9,7 +9,7 @@ public class ClassInfo extends JFrame implements ActionListener {
 	
 	public ClassInfo(String string) {
 		JPanel panel = new JPanel();
-		ok_button = new JButton("OK");
+		JButton ok_button = new JButton("OK");
 		JTextArea description_text = new JTextArea();
 		
 		panel.setLayout(new GridLayout(2,1));
@@ -19,14 +19,12 @@ public class ClassInfo extends JFrame implements ActionListener {
 		this.add(panel);
 		ok_button.addActionListener(this);
 		
-		this.setTitle("Class information");
-		this.setSize(200,300);
+		this.setTitle("Description - Warrior");
+		this.setSize(150,300);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		if(string == "Warrior" ){
-			description_text.setText("The Warrior focuses on melee combat, and uses a special resource known as Fury that builds up during fights for special attacks. The Warrior"
-					+ "is also quite durable, though not as much as the Paladin. In addition, the Warrior is the only class that can dual-wield swords, axes and maces. ");
+			description_text.setText("The Warrior is a damage-focused class.");
 		}
 		
 	}
@@ -34,7 +32,7 @@ public class ClassInfo extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == ok_button){
-			this.dispose();
+			this.setVisible(false);
 			}
 		
 	}
