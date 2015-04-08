@@ -1,0 +1,8 @@
+
+public class Player {
+	
+	int level = 1;
+	String player_class;
+	
+
+}

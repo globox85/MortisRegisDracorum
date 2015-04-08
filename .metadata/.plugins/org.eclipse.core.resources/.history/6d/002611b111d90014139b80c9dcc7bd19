@@ -9,11 +9,9 @@ public class mainGameWindow extends JFrame implements ActionListener {
 	JButton startButton, continueButton;
 	JButton[] character_info_button = new JButton[4];
 	JButton[] character_select_button = new JButton[4];
-	JTextArea introductionText, questInfo;
-	JLabel healthLabel, resourceLabel;
+	JTextArea introductionText;
 	static mainGameWindow gamewindow;
 	GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
-	Player playercharacter;
 
 	public mainGameWindow() {
 		mainPanel = new JPanel();
@@ -126,13 +124,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			validate();
 			repaint();
 		}
-		
-		if(string == "gameplay"){
-			mainPanel.removeAll();
-			mainPanel.setLayout(new GridBagLayout());
-			
-			
-		}
 	
 	}
 
@@ -159,23 +150,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			new ClassInfo("Rogue");
 		}
 		
-		if(e.getSource() == character_select_button[0]){
-			playercharacter.setClass("Warrior");
-			gamewindow.setWindowType("gameplay", gamewindow);
-			
-		}
 		
-		if(e.getSource() == character_select_button[1]){
-			//playercharacter.setClass("Paladin");
-		}
-		
-		if(e.getSource() == character_select_button[2]){
-			//playercharacter.setClass("Mage");
-		}
-		
-		if(e.getSource() == character_select_button[3]){
-			//playercharacter.setClass("Rogue");
-		}
 	}
 
 }

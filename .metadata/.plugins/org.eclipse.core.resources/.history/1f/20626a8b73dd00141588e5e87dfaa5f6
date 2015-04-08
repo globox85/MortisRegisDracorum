@@ -9,8 +9,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 	JButton startButton, continueButton;
 	JButton[] character_info_button = new JButton[4];
 	JButton[] character_select_button = new JButton[4];
-	JTextArea introductionText, questInfo;
-	JLabel healthLabel, resourceLabel;
+	JTextArea introductionText;
 	static mainGameWindow gamewindow;
 	GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
 	Player playercharacter;

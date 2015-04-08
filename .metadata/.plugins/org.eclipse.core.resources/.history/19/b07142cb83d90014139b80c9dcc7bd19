@@ -1,0 +1,17 @@
+
+public class Player {
+	
+	int level = 1;
+	int health, mana, toughness, dexterity, intelligence, strength;
+	String player_class;
+	
+	
+	public void setClass(String string) {
+		player_class = string;
+		
+		
+		
+	}
+	
+
+}
