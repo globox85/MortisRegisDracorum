@@ -6,10 +6,10 @@ import javax.swing.*;
 public class mainGameWindow extends JFrame implements ActionListener {
 	
 	JPanel mainPanel, emptyPanel1, emptyPanel2;
-	JButton startButton, continueButton, menuButton, mapButton, inventoryButton, statusButton;
+	JButton startButton, continueButton;
 	JButton[] character_info_button = new JButton[4];
 	JButton[] character_select_button = new JButton[4];
-	JTextArea introductionText, questInfo, dungeonInfo;
+	JTextArea introductionText, questInfo;
 	JLabel healthLabel, resourceLabel;
 	static mainGameWindow gamewindow;
 	GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
@@ -130,73 +130,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		if(string == "gameplay"){
 			mainPanel.removeAll();
 			mainPanel.setLayout(new GridBagLayout());
-			JPanel statusPanel = new JPanel();
-			JPanel questInfoPanel = new JPanel();
-			JPanel dungeonInfoPanel = new JPanel();
-			JPanel gameWorldPanel = new JPanel();
-			JPanel gameplayButtonsPanel = new JPanel();
-		
-			
-			healthLabel = new JLabel("HP: " /*+ playercharacter.health*/);
-			resourceLabel = new JLabel("Resource");
-			/*if(playercharacter.player_class == "Warrior"){
-				resourceLabel.setText("Fury: " + playercharacter.fury);
-				
-			}*/
-			
-			questInfo = new JTextArea();
-			dungeonInfo = new JTextArea();
-			
-			menuButton = new JButton("Menu");
-			mapButton = new JButton ("Map");
-			inventoryButton = new JButton("Inventory");
-			statusButton = new JButton("Status");
-			
-			
-			
-			gameplayButtonsPanel.setLayout(new GridLayout(1,4));
-			gameplayButtonsPanel.add(menuButton);
-			gameplayButtonsPanel.add(mapButton);
-			gameplayButtonsPanel.add(inventoryButton);
-			gameplayButtonsPanel.add(statusButton);
-			
-			statusPanel.setLayout((new GridLayout(2,1) ));
-			statusPanel.add(healthLabel);
-			statusPanel.add(resourceLabel);
-			
-			questInfoPanel.add(questInfo);
-			dungeonInfoPanel.add(dungeonInfo);
-			
-			c.gridx = 0;
-			c.gridy = 0;
-			
-			mainPanel.add(statusPanel, c);
-			
-			c.gridx = 1;
-			c.gridwidth = 2;
-			
-			mainPanel.add(questInfoPanel, c);
-			
-			c.gridx = 3;
-			c.gridwidth = 1;
-			
-			mainPanel.add(dungeonInfoPanel, c);
-			
-			c.gridx = 0;
-			c.gridy = 1;
-			c.gridwidth = 4;
-			
-			mainPanel.add(gameWorldPanel, c);
-			
-			c.gridy = 2;
-			
-			mainPanel.add(gameplayButtonsPanel, c);
-			
-			validate();
-			repaint();
-			
-			
-			
 			
 			
 		}
@@ -227,7 +160,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		}
 		
 		if(e.getSource() == character_select_button[0]){
-			//playercharacter.setClass("Warrior");
+			playercharacter.setClass("Warrior");
 			gamewindow.setWindowType("gameplay", gamewindow);
 			
 		}

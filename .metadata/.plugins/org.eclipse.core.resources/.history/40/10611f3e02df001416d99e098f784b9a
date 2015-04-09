@@ -137,12 +137,12 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			JPanel gameplayButtonsPanel = new JPanel();
 		
 			
-			healthLabel = new JLabel("HP: " /*+ playercharacter.health*/);
-			resourceLabel = new JLabel("Resource");
-			/*if(playercharacter.player_class == "Warrior"){
+			healthLabel = new JLabel("HP: " + playercharacter.health);
+			resourceLabel = new JLabel();
+			if(playercharacter.player_class == "Warrior"){
 				resourceLabel.setText("Fury: " + playercharacter.fury);
 				
-			}*/
+			}
 			
 			questInfo = new JTextArea();
 			dungeonInfo = new JTextArea();
@@ -227,7 +227,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		}
 		
 		if(e.getSource() == character_select_button[0]){
-			//playercharacter.setClass("Warrior");
+			playercharacter.setClass("Warrior");
 			gamewindow.setWindowType("gameplay", gamewindow);
 			
 		}
