@@ -132,7 +132,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			mainPanel.removeAll();
 			mainPanel.setLayout(new GridBagLayout());
 			JPanel statusPanel = new JPanel();
-			JPanel gameWorldPanel = new JPanel(); //1264x617 pixlar enligt mina mätningar
+			JPanel gameWorldPanel = new JPanel();
 			JPanel gameplayButtonsPanel = new JPanel();
 			
 			JLabel testLabel = new JLabel("Test");
@@ -153,9 +153,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			inventoryButton = new JButton("Inventory");
 			statusButton = new JButton("Status");
 			
-			menuButton.addActionListener(this);
-			mapButton.addActionListener(this);
-			inventoryButton.addActionListener(this);
 			
 			
 			gameplayButtonsPanel.setLayout(new GridLayout(1,4));
@@ -171,9 +168,9 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			
 			questInfo.setText("Current quest: Example quest");
 			dungeonInfo.setText("Current dungeon: Example dungeon");
-			gameWorldPanel.setLayout(new GridLayout(19,40));
+			gameWorldPanel.setLayout(new GridLayout(38,80));
 			
-			for(int i = 0; i<(19*40); i++){
+			for(int i = 0; i<(38*80); i++){
 				gameWorldPanel.add(testLabel);
 			}
 			
