@@ -1,0 +1,90 @@
+import javax.swing.JPanel;
+import java.awt.GridBagLayout;
+import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Insets;
+import javax.swing.JButton;
+
+
+public class Test extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public Test() {
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		setLayout(gridBagLayout);
+		
+		JPanel panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 5, 5);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 0;
+		gbc_panel.gridy = 0;
+		add(panel, gbc_panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblHp = new JLabel("HP:");
+		panel.add(lblHp);
+		
+		JLabel lblMana = new JLabel("Mana:");
+		panel.add(lblMana);
+		
+		JTextArea txtrQuestDescription = new JTextArea();
+		txtrQuestDescription.setText("Quest description");
+		GridBagConstraints gbc_txtrQuestDescription = new GridBagConstraints();
+		gbc_txtrQuestDescription.insets = new Insets(0, 0, 5, 5);
+		gbc_txtrQuestDescription.fill = GridBagConstraints.BOTH;
+		gbc_txtrQuestDescription.gridx = 1;
+		gbc_txtrQuestDescription.gridy = 0;
+		add(txtrQuestDescription, gbc_txtrQuestDescription);
+		
+		JTextArea textArea = new JTextArea();
+		GridBagConstraints gbc_textArea = new GridBagConstraints();
+		gbc_textArea.insets = new Insets(0, 0, 5, 0);
+		gbc_textArea.fill = GridBagConstraints.BOTH;
+		gbc_textArea.gridx = 2;
+		gbc_textArea.gridy = 0;
+		add(textArea, gbc_textArea);
+		
+		JPanel panel_1 = new JPanel();
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.gridwidth = 3;
+		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 1;
+		add(panel_1, gbc_panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.gridwidth = 3;
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 2;
+		add(panel_2, gbc_panel_2);
+		panel_2.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JButton btnNewButton = new JButton("New button");
+		panel_2.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		panel_2.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		panel_2.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		panel_2.add(btnNewButton_3);
+
+	}
+
+}

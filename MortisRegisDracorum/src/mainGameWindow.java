@@ -132,8 +132,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			mainPanel.removeAll();
 			mainPanel.setLayout(new GridBagLayout());
 			JPanel statusPanel = new JPanel();
-			JPanel questInfoPanel = new JPanel();
-			JPanel dungeonInfoPanel = new JPanel();
 			JPanel gameWorldPanel = new JPanel();
 			JPanel gameplayButtonsPanel = new JPanel();
 			
@@ -167,8 +165,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			statusPanel.add(healthLabel);
 			statusPanel.add(resourceLabel);
 			
-			questInfoPanel.add(questInfo);
-			dungeonInfoPanel.add(dungeonInfo);
 			
 			questInfo.setText("Current quest: Example quest");
 			dungeonInfo.setText("Current dungeon: Example dungeon");
@@ -182,37 +178,34 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			
 			c.gridx = 0;
 			c.gridy = 0;
-			c.fill = GridBagConstraints.BOTH;
-			c.anchor = GridBagConstraints.NORTHWEST;
-			c.ipady = 50;
+			c.anchor = GridBagConstraints.FIRST_LINE_START;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.weighty = 1.0;
+			c.weightx = 1.0;
 			
-			mainPanel.add(statusPanel, c);
+			mainPanel.add(statusPanel,c);
 			
-			c.gridx = 1;
+			c.gridx = GridBagConstraints.RELATIVE;
+			c.anchor = GridBagConstraints.PAGE_START;
 			c.gridwidth = 2;
-			c.anchor = GridBagConstraints.NORTH;
+			c.fill = GridBagConstraints.HORIZONTAL;
 			
-			mainPanel.add(questInfoPanel, c);
+			mainPanel.add(questInfo,c);
 			
-			c.gridx = 3;
-			c.gridwidth = 1;
-			c.anchor = GridBagConstraints.NORTHEAST;
+			c.gridwidth = GridBagConstraints.REMAINDER;
 			
-			mainPanel.add(dungeonInfoPanel, c);
+			mainPanel.add(dungeonInfo,c);
 			
 			c.gridx = 0;
 			c.gridy = 1;
-			c.gridwidth = 4;
-			c.anchor = GridBagConstraints.CENTER;
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			c.fill = GridBagConstraints.BOTH;
 			
-			mainPanel.add(gameWorldPanel, c);
+			mainPanel.add(gameWorldPanel,c);
 			
 			c.gridy = 2;
-			c.anchor = GridBagConstraints.SOUTHWEST;
-			c.ipady = 45;
-			c.ipadx = 950;
 			
-			mainPanel.add(gameplayButtonsPanel, c);
+			mainPanel.add(gameplayButtonsPanel,c);
 			
 			validate();
 			repaint();
