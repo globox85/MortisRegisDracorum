@@ -172,6 +172,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			
 			questInfo.setText("Current quest: Example quest");
 			dungeonInfo.setText("Current dungeon: Example dungeon");
+			gameWorldPanel.setSize(1280, 600);
 			gameWorldPanel.setLayout(new GridLayout(38,80));
 			
 			for(int i = 0; i<(38*80); i++){
@@ -184,7 +185,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			c.gridy = 0;
 			c.fill = GridBagConstraints.BOTH;
 			c.anchor = GridBagConstraints.NORTHWEST;
-			c.ipady = 50;
 			
 			mainPanel.add(statusPanel, c);
 			
@@ -209,8 +209,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			
 			c.gridy = 2;
 			c.anchor = GridBagConstraints.SOUTHWEST;
-			c.ipady = 45;
-			c.ipadx = 950;
 			
 			mainPanel.add(gameplayButtonsPanel, c);
 			

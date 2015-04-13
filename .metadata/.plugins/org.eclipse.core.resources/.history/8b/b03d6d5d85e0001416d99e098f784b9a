@@ -184,7 +184,6 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			c.gridy = 0;
 			c.fill = GridBagConstraints.BOTH;
 			c.anchor = GridBagConstraints.NORTHWEST;
-			c.ipady = 50;
 			
 			mainPanel.add(statusPanel, c);
 			
@@ -209,8 +208,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			
 			c.gridy = 2;
 			c.anchor = GridBagConstraints.SOUTHWEST;
-			c.ipady = 45;
-			c.ipadx = 950;
+			c.ipady = 60;
 			
 			mainPanel.add(gameplayButtonsPanel, c);
 			
