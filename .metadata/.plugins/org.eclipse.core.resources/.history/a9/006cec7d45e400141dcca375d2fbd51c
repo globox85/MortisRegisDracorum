@@ -6,13 +6,13 @@ import javax.swing.*;
 public class mainGameWindow extends JFrame implements ActionListener {
 	
 	JPanel mainPanel, emptyPanel1, emptyPanel2;
-	JButton startButton, continueButton;
+	JButton startButton, continueButton, menuButton, mapButton, inventoryButton, statusButton;
 	JButton[] character_info_button = new JButton[4];
 	JButton[] character_select_button = new JButton[4];
-	JTextArea introductionText, questInfo;
+	JTextArea introductionText, questInfo, dungeonInfo;
 	JLabel healthLabel, resourceLabel;
 	static mainGameWindow gamewindow;
-	GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
+
 	Player playercharacter;
 
 	public mainGameWindow() {
@@ -61,6 +61,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 					+ " Falconkeep call out for aid. \nThe very next day, a young traveller arrives...  ");
 			mainPanel.removeAll();
 			mainPanel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
 			c.fill = GridBagConstraints.BOTH;
 			c.gridx = 0;
 			c.gridy = 0;
@@ -130,6 +131,96 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		if(string == "gameplay"){
 			mainPanel.removeAll();
 			mainPanel.setLayout(new GridBagLayout());
+			JPanel statusPanel = new JPanel();
+			JPanel gameWorldPanel = new JPanel(); //1264x617 pixlar enligt mina mätningar
+			JPanel gameplayButtonsPanel = new JPanel();
+			
+			JLabel[] worldTiles = new JLabel[19*40];
+			
+			for(int i=0; i<(19*40); i++ ){
+				worldTiles[i] = new JLabel("Tile");
+			}
+			
+			
+		
+			
+			healthLabel = new JLabel("HP: " /*+ playercharacter.health*/);
+			resourceLabel = new JLabel("Resource");
+			/*if(playercharacter.player_class == "Warrior"){
+				resourceLabel.setText("Fury: " + playercharacter.fury);
+				
+			}*/
+			
+			questInfo = new JTextArea();
+			dungeonInfo = new JTextArea();
+			
+			menuButton = new JButton("Menu");
+			mapButton = new JButton ("Map");
+			inventoryButton = new JButton("Inventory");
+			statusButton = new JButton("Status");
+			
+			menuButton.addActionListener(this);
+			mapButton.addActionListener(this);
+			inventoryButton.addActionListener(this);
+			
+			
+			gameplayButtonsPanel.setLayout(new GridLayout(1,4));
+			gameplayButtonsPanel.add(menuButton);
+			gameplayButtonsPanel.add(mapButton);
+			gameplayButtonsPanel.add(inventoryButton);
+			gameplayButtonsPanel.add(statusButton);
+			
+			statusPanel.setLayout((new GridLayout(2,1) ));
+			statusPanel.add(healthLabel);
+			statusPanel.add(resourceLabel);
+			
+			
+			questInfo.setText("Current quest: Example quest");
+			dungeonInfo.setText("Current dungeon: Example dungeon");
+			gameWorldPanel.setLayout(new GridLayout(19,40));
+			
+			for(int i = 0; i<(19*40); i++){
+				gameWorldPanel.add(worldTiles[i]);
+			}
+			
+			GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
+			
+			c.gridx = 0;
+			c.gridy = 0;
+			c.anchor = GridBagConstraints.FIRST_LINE_START;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.weighty = 1.0;
+			c.weightx = 1.0;
+			
+			mainPanel.add(statusPanel,c);
+			
+			c.gridx = GridBagConstraints.RELATIVE;
+			c.anchor = GridBagConstraints.PAGE_START;
+			c.gridwidth = 2;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			
+			mainPanel.add(questInfo,c);
+			
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			
+			mainPanel.add(dungeonInfo,c);
+			
+			c.gridx = 0;
+			c.gridy = 1;
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			c.fill = GridBagConstraints.BOTH;
+			
+			mainPanel.add(gameWorldPanel,c);
+			
+			c.gridy = 2;
+			
+			mainPanel.add(gameplayButtonsPanel,c);
+			
+			validate();
+			repaint();
+			
+			
+			
 			
 			
 		}
@@ -160,7 +251,7 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		}
 		
 		if(e.getSource() == character_select_button[0]){
-			playercharacter.setClass("Warrior");
+			//playercharacter.setClass("Warrior");
 			gamewindow.setWindowType("gameplay", gamewindow);
 			
 		}
