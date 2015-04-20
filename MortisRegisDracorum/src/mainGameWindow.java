@@ -241,10 +241,18 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				gameWorldPanel.add(worldTiles[i]);
 				
 			}
+			for(int i = 89; i <108; i++){
+			worldTiles[i].setIcon(stoneWall);
+			}
+			for(int i = 130; i <= 146; i++){
+				for(int j=0; j < 8; j++){
+					worldTiles[i + (40 * j)].setIcon(stoneTile);
+				}
+			}
 			
-			worldTiles[playercharacter.currentTile].setIcon(stoneWall);
 			gamewindow.validate();
 			gamewindow.repaint();
+			
 		}
 		
 	}
