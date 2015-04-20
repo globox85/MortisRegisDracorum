@@ -224,6 +224,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			mainPanel.add(gameplayButtonsPanel,c);
 			
 			generateRoom("Demo Room 1");
+			playercharacter.currentTile = 210; 
 			
 			validate();
 			repaint();
@@ -248,6 +249,18 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				for(int j=0; j < 8; j++){
 					worldTiles[i + (40 * j)].setIcon(stoneTile);
 				}
+			}
+			
+			for(int i = 129; i <450; i = i + 40){
+				worldTiles[i].setIcon(stoneWall);
+			}
+			
+			for(int i = 147; i <468; i = i + 40){
+				worldTiles[i].setIcon(stoneWall);
+			}
+			
+			for(int i = 449; i <468; i++){
+				worldTiles[i].setIcon(stoneWall);
 			}
 			
 			gamewindow.validate();

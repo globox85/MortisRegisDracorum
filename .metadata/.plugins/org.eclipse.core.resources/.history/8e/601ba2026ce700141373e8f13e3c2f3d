@@ -1,9 +1,10 @@
 import java.awt.event.*;
 import java.awt.*;
+
 import javax.swing.*;
 
 
-public class mainGameWindow extends JFrame implements ActionListener {
+public class mainGameWindow extends JFrame implements ActionListener, KeyListener {
 	
 	JPanel mainPanel, emptyPanel1, emptyPanel2;
 	JButton startButton, continueButton, menuButton, mapButton, inventoryButton, statusButton;
@@ -12,8 +13,19 @@ public class mainGameWindow extends JFrame implements ActionListener {
 	JTextArea introductionText, questInfo, dungeonInfo;
 	JLabel healthLabel, resourceLabel;
 	static mainGameWindow gamewindow;
+	JPanel gameWorldPanel = new JPanel(); //1264x617 pixlar enligt mina mätningar
+	
+	String current_mode;
+	
+	JLabel[] worldTiles = new JLabel[19*40];
+	
+	
+	
+	ImageIcon blackTile = new ImageIcon("graphics/tiles/black.png");
+	ImageIcon stoneTile = new ImageIcon("graphics/tiles/stoneTile.png");
+	ImageIcon stoneWall = new ImageIcon("graphics/tiles/stoneWall.png");
 
-	Player playercharacter;
+	Player playercharacter = new Player();
 
 	public mainGameWindow() {
 		mainPanel = new JPanel();
@@ -32,6 +44,8 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		
 		startButton.addActionListener(this);
 		continueButton.addActionListener(this);
+		mainPanel.setFocusable(true);
+		mainPanel.addKeyListener(this);
 		
 		this.setSize(1280,720);
 		this.setVisible(true);
@@ -129,16 +143,17 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		}
 		
 		if(string == "gameplay"){
+			current_mode = "gameplay";
 			mainPanel.removeAll();
 			mainPanel.setLayout(new GridBagLayout());
 			JPanel statusPanel = new JPanel();
-			JPanel questInfoPanel = new JPanel();
-			JPanel dungeonInfoPanel = new JPanel();
-			JPanel gameWorldPanel = new JPanel();
+			
 			JPanel gameplayButtonsPanel = new JPanel();
 			
-			JLabel testLabel = new JLabel("Test");
-		
+			for(int i=0; i<worldTiles.length; i++ ){
+				worldTiles[i] = new JLabel();
+				
+			}
 			
 			healthLabel = new JLabel("HP: " /*+ playercharacter.health*/);
 			resourceLabel = new JLabel("Resource");
@@ -155,6 +170,9 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			inventoryButton = new JButton("Inventory");
 			statusButton = new JButton("Status");
 			
+			menuButton.addActionListener(this);
+			mapButton.addActionListener(this);
+			inventoryButton.addActionListener(this);
 			
 			
 			gameplayButtonsPanel.setLayout(new GridLayout(1,4));
@@ -167,35 +185,88 @@ public class mainGameWindow extends JFrame implements ActionListener {
 			statusPanel.add(healthLabel);
 			statusPanel.add(resourceLabel);
 			
-			questInfoPanel.add(questInfo);
-			dungeonInfoPanel.add(dungeonInfo);
 			
 			questInfo.setText("Current quest: Example quest");
 			dungeonInfo.setText("Current dungeon: Example dungeon");
-			gameWorldPanel.setLayout(new GridLayout(38,80));
-			
-			for(int i = 0; i<(38*80); i++){
-				gameWorldPanel.add(testLabel);
-			}
+			gameWorldPanel.setLayout(new GridLayout(19,40));
 			
 			GridBagConstraints c = new GridBagConstraints(); //Används senare för GridBagLayout
 			
 			c.gridx = 0;
 			c.gridy = 0;
 			c.anchor = GridBagConstraints.FIRST_LINE_START;
-			c.fill = GridBagConstraints.BOTH;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.weighty = 1.0;
+			c.weightx = 1.0;
 			
 			mainPanel.add(statusPanel,c);
+			
+			c.gridx = GridBagConstraints.RELATIVE;
+			c.anchor = GridBagConstraints.PAGE_START;
+			c.gridwidth = 2;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			
+			mainPanel.add(questInfo,c);
+			
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			
+			mainPanel.add(dungeonInfo,c);
+			
+			c.gridx = 0;
+			c.gridy = 1;
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			c.fill = GridBagConstraints.BOTH;
+			
+			mainPanel.add(gameWorldPanel,c);
+			
+			c.gridy = 2;
+			
+			mainPanel.add(gameplayButtonsPanel,c);
+			
+			generateRoom("Demo Room 1");
 			
 			validate();
 			repaint();
 			
 			
 			
-			
-			
 		}
 	
+	}
+
+	private void generateRoom(String string) {
+		if(string == "Demo Room 1"){
+			for(int i = 0; i < worldTiles.length; i++){
+				worldTiles[i].setIcon(blackTile);
+				gameWorldPanel.add(worldTiles[i]);
+				
+			}
+			for(int i = 89; i <108; i++){
+			worldTiles[i].setIcon(stoneWall);
+			}
+			for(int i = 130; i <= 146; i++){
+				for(int j=0; j < 8; j++){
+					worldTiles[i + (40 * j)].setIcon(stoneTile);
+				}
+			}
+			
+			for(int i = 129; i <450; i = i + 40){
+				worldTiles[i].setIcon(stoneWall);
+			}
+			
+			for(int i = 147; i <468; i = i + 40){
+				worldTiles[i].setIcon(stoneWall);
+			}
+			
+			for(int i = 449; i <468; i++){
+				worldTiles[i].setIcon(stoneWall);
+			}
+			
+			gamewindow.validate();
+			gamewindow.repaint();
+			
+		}
+		
 	}
 
 	@Override
@@ -238,6 +309,58 @@ public class mainGameWindow extends JFrame implements ActionListener {
 		if(e.getSource() == character_select_button[3]){
 			//playercharacter.setClass("Rogue");
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+	
+			if(e.getKeyCode() == KeyEvent.VK_W){
+				if(playercharacter.currentTile - 40 > 0){
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile - 40].setIcon(stoneWall);
+				playercharacter.currentTile = playercharacter.currentTile - 40;
+				gamewindow.validate();
+				gamewindow.repaint();
+				}
+			}
+			
+			if(e.getKeyCode() == KeyEvent.VK_S){
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile + 40].setIcon(stoneWall);
+				playercharacter.currentTile = playercharacter.currentTile + 40;
+				gamewindow.validate();
+				gamewindow.repaint();
+			}
+			
+			if(e.getKeyCode() == KeyEvent.VK_A){
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile - 1].setIcon(stoneWall);
+				playercharacter.currentTile = playercharacter.currentTile - 1;
+				gamewindow.validate();
+				gamewindow.repaint();
+			}
+			
+			if(e.getKeyCode() == KeyEvent.VK_D){
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile + 1].setIcon(stoneWall);
+				playercharacter.currentTile = playercharacter.currentTile + 1;
+				gamewindow.validate();
+				gamewindow.repaint();
+			}
+			
+		}
+		
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
