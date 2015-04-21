@@ -225,7 +225,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			
 			generateRoom("Demo Room 1");
 			playercharacter.currentTile = 210; 
-			worldTiles[playercharacter.currentTile].setIcon(playercharacter.sprite);
 			
 			validate();
 			repaint();
@@ -318,8 +317,8 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 	
 			if(e.getKeyCode() == KeyEvent.VK_W){
 				if(playercharacter.currentTile - 40 > 0){
-				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
-				worldTiles[playercharacter.currentTile - 40].setIcon(playercharacter.sprite);
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile - 40].setIcon(stoneWall);
 				playercharacter.currentTile = playercharacter.currentTile - 40;
 				gamewindow.validate();
 				gamewindow.repaint();
@@ -327,24 +326,24 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_S){
-				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
-				worldTiles[playercharacter.currentTile + 40].setIcon(playercharacter.sprite);
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile + 40].setIcon(stoneWall);
 				playercharacter.currentTile = playercharacter.currentTile + 40;
 				gamewindow.validate();
 				gamewindow.repaint();
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_A){
-				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
-				worldTiles[playercharacter.currentTile - 1].setIcon(playercharacter.sprite);
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile - 1].setIcon(stoneWall);
 				playercharacter.currentTile = playercharacter.currentTile - 1;
 				gamewindow.validate();
 				gamewindow.repaint();
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_D){
-				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
-				worldTiles[playercharacter.currentTile + 1].setIcon(playercharacter.sprite);
+				worldTiles[playercharacter.currentTile].setIcon(blackTile);
+				worldTiles[playercharacter.currentTile + 1].setIcon(stoneWall);
 				playercharacter.currentTile = playercharacter.currentTile + 1;
 				gamewindow.validate();
 				gamewindow.repaint();
