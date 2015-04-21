@@ -227,8 +227,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			playercharacter.currentTile = 210; 
 			worldTiles[playercharacter.currentTile].setIcon(playercharacter.sprite);
 			
-			worldTiles[370].setText("Monster");
-			
 			validate();
 			repaint();
 			
@@ -325,10 +323,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				playercharacter.currentTile = playercharacter.currentTile - 40;
 				gamewindow.validate();
 				gamewindow.repaint();
-				
-				if(worldTiles[playercharacter.currentTile - 40].getText() == "Monster"){
-					new battleWindow("demo");
-				}
 				}
 			}
 			
@@ -338,10 +332,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				playercharacter.currentTile = playercharacter.currentTile + 40;
 				gamewindow.validate();
 				gamewindow.repaint();
-				
-				if(worldTiles[playercharacter.currentTile + 40].getText() == "Monster"){
-					new battleWindow("demo");
-				}
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_A && worldTiles[playercharacter.currentTile - 1].getIcon() != stoneWall){
@@ -350,10 +340,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				playercharacter.currentTile = playercharacter.currentTile - 1;
 				gamewindow.validate();
 				gamewindow.repaint();
-				
-				if(worldTiles[playercharacter.currentTile - 1].getText() == "Monster"){
-					new battleWindow("demo");
-				}
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_D && worldTiles[playercharacter.currentTile + 1].getIcon() != stoneWall){
@@ -362,10 +348,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				playercharacter.currentTile = playercharacter.currentTile + 1;
 				gamewindow.validate();
 				gamewindow.repaint();
-				
-				if(worldTiles[playercharacter.currentTile + 1].getText() == "Monster"){
-					new battleWindow("demo");
-				}
 			}
 			
 		}
