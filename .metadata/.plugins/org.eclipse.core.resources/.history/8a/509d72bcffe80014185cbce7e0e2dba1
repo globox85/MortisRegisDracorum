@@ -155,12 +155,12 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				
 			}
 			
-			healthLabel = new JLabel("HP: " + playercharacter.health);
+			healthLabel = new JLabel("HP: " /*+ playercharacter.health*/);
 			resourceLabel = new JLabel("Resource");
-			if(playercharacter.player_class == "Warrior"){
+			/*if(playercharacter.player_class == "Warrior"){
 				resourceLabel.setText("Fury: " + playercharacter.fury);
 				
-			}
+			}*/
 			
 			questInfo = new JTextArea();
 			dungeonInfo = new JTextArea();
@@ -297,7 +297,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 		}
 		
 		if(e.getSource() == character_select_button[0]){
-			playercharacter.setClass("Warrior");
+			//playercharacter.setClass("Warrior");
 			gamewindow.setWindowType("gameplay", gamewindow);
 			
 		}
@@ -327,7 +327,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				gamewindow.repaint();
 				
 				if(worldTiles[playercharacter.currentTile - 40].getText() == "Monster"){
-					new battleWindow("demo", playercharacter);
+					new battleWindow("demo");
 				}
 				}
 			}
@@ -340,7 +340,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				gamewindow.repaint();
 				
 				if(worldTiles[playercharacter.currentTile + 40].getText() == "Monster"){
-					new battleWindow("demo", playercharacter);
+					new battleWindow("demo");
 				}
 			}
 			
@@ -352,7 +352,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				gamewindow.repaint();
 				
 				if(worldTiles[playercharacter.currentTile - 1].getText() == "Monster"){
-					new battleWindow("demo", playercharacter);
+					new battleWindow("demo");
 				}
 			}
 			
@@ -364,7 +364,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				gamewindow.repaint();
 				
 				if(worldTiles[playercharacter.currentTile + 1].getText() == "Monster"){
-					new battleWindow("demo", playercharacter);
+					new battleWindow("demo");
 				}
 			}
 			
