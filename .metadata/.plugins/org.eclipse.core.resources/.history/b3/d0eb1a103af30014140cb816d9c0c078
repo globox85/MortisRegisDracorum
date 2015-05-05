@@ -1,0 +1,15 @@
+
+public class Monster {
+	
+	int health, defense, attack;
+
+	public void setMonsterType(String string) {
+		if(string == "zombie"){
+			health = 60;
+			defense = 10;
+			attack = 15;
+		}
+		
+	}
+
+}

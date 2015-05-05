@@ -83,16 +83,7 @@ public class battleWindow extends JFrame implements ActionListener {
 			monster.health = (int) (monster.health - damage);
 			combatStatus.setText("Player did " + (int)damage + " damage!");
 			
-			if(monster.health <= 0){
-				JOptionPane.showMessageDialog(null, "You won!");
-				this.dispose();
-			}
-			
-			else{
-			
 			monsterTurn(monster);
-			}
-			
 			
 		}
 		
@@ -130,6 +121,11 @@ int plusMinus = (int)Math.floor(Math.random() * 2) +1;
 		else if(plusMinus == 2){
 			damage = damage - (player.toughness + playerDefenseModifier);
 		}
+		
+		
+		return damage;
+		
+		
 		
 		
 		return damage;

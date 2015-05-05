@@ -14,7 +14,6 @@ public class battleWindow extends JFrame implements ActionListener {
 	
 	Monster monster;
 	public battleWindow(String battleType, Player playercharacter){
-		monster = new Monster();
 		player = playercharacter;
 		mainPanel = new JPanel();
 		buttonsPanel = new JPanel();
@@ -81,58 +80,10 @@ public class battleWindow extends JFrame implements ActionListener {
 		if(e.getSource() == attackButton){
 			double damage = calculatePlayerDamage(player,monster);
 			monster.health = (int) (monster.health - damage);
-			combatStatus.setText("Player did " + (int)damage + " damage!");
-			
-			if(monster.health <= 0){
-				JOptionPane.showMessageDialog(null, "You won!");
-				this.dispose();
-			}
-			
-			else{
-			
-			monsterTurn(monster);
-			}
-			
+			combatStatus.setText("Player did " + damage + " damage!");
 			
 		}
 		
-	}
-
-	private void monsterTurn(Monster monster2) {
-		double damage = calculateMonsterDamage(monster, player);
-		player.health = (int) (player.health - damage);
-		combatStatus.append("\nMonster did " + (int)damage + " damage!");
-		
-	}
-
-	private double calculateMonsterDamage(Monster monster2, Player player2) {
-		double damage = 0;
-		
-		double monsterDamageModifier = (Math.random() * (monster.attack/2)) + 1;
-		double playerDefenseModifier = (Math.random() * (player.toughness/2)) + 1;
-		
-int plusMinus = (int)Math.floor(Math.random() * 2) +1;
-		
-		if(plusMinus == 1){
-			damage = (monster.attack) + monsterDamageModifier;
-		}
-		
-		else if(plusMinus == 2){
-			damage = (monster.attack) + monsterDamageModifier;
-		}
-		
-		plusMinus = (int)Math.floor(Math.random() * 2) +1;
-		
-		if(plusMinus == 1){
-			damage = damage - (player.toughness - playerDefenseModifier);
-		}
-		
-		else if(plusMinus == 2){
-			damage = damage - (player.toughness + playerDefenseModifier);
-		}
-		
-		
-		return damage;
 	}
 
 	private double calculatePlayerDamage(Player player2, Monster monster2) {

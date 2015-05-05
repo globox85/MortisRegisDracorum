@@ -83,7 +83,7 @@ public class battleWindow extends JFrame implements ActionListener {
 			monster.health = (int) (monster.health - damage);
 			combatStatus.setText("Player did " + (int)damage + " damage!");
 			
-			if(monster.health <= 0){
+			if(monster.health >= 0){
 				JOptionPane.showMessageDialog(null, "You won!");
 				this.dispose();
 			}
