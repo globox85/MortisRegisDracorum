@@ -7,7 +7,7 @@ import javax.swing.*;
 public class battleWindow extends JFrame implements ActionListener {
 	JPanel mainPanel, buttonsPanel, statusPanel, combatPanel, playerStatusPanel, monsterStatusPanel;
 	JButton attackButton, itemsButton, escapeButton;
-	JLabel playerHealth, playerResource, monsterHealth, turnCounter, monsterImage;
+	JLabel playerHealth, playerResource, monsterHealth, turnCounter;
 	JTextArea combatStatus;
 	int monsterNumber, playerTurns;
 	Player player;
@@ -22,7 +22,6 @@ public class battleWindow extends JFrame implements ActionListener {
 		combatPanel = new JPanel();
 		playerStatusPanel = new JPanel();
 		monsterStatusPanel = new JPanel();
-		monsterImage = new JLabel();
 		
 		combatStatus = new JTextArea();
 		
@@ -51,10 +50,7 @@ public class battleWindow extends JFrame implements ActionListener {
 		playerStatusPanel.setLayout(new GridLayout(2,1));
 		playerStatusPanel.add(playerHealth);
 		playerStatusPanel.add(playerResource);
-		
-		monsterImage.setIcon(monster.combatSprite);
-		monsterImage.setAlignmentY(CENTER_ALIGNMENT);
-		
+
 		attackButton.addActionListener(this);
 		itemsButton.addActionListener(this);
 		escapeButton.addActionListener(this);
@@ -62,8 +58,6 @@ public class battleWindow extends JFrame implements ActionListener {
 		statusPanel.add(playerStatusPanel);
 		statusPanel.add(combatStatus);
 		statusPanel.add(monsterStatusPanel);
-		
-		combatPanel.add(monsterImage);
 		
 		buttonsPanel.add(attackButton);
 		buttonsPanel.add(itemsButton);
@@ -107,7 +101,6 @@ public class battleWindow extends JFrame implements ActionListener {
 	private void monsterTurn(Monster monster2) {
 		double damage = calculateMonsterDamage(monster, player);
 		player.health = (int) (player.health - damage);
-		playerHealth.setText("HP: " + player.health);
 		combatStatus.append("\nMonster did " + (int)damage + " damage!");
 		
 	}

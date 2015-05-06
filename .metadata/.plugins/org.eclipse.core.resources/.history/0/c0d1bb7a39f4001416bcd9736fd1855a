@@ -377,7 +377,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile - 40].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile - 40;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -402,7 +401,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile + 40].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile + 40;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -425,7 +423,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile - 1].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile - 1;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -448,7 +445,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile + 1].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile + 1;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 

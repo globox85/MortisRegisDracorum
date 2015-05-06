@@ -231,7 +231,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			worldTiles[playercharacter.currentTile].setIcon(playercharacter.sprite);
 
 			worldTiles[370].setText("Monster");
-			worldTiles[370].setIcon(zombieWorldTile);
+			worldTiles[330].setIcon(zombieWorldTile);
 
 			worldTiles[457].setText("Door");
 			worldTiles[457].setIcon(woodDoor);
@@ -272,9 +272,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			for(int i = 449; i <468; i++){
 				worldTiles[i].setIcon(stoneWall);
 			}
-			
-			playercharacter.currentTile = 210; 
-			worldTiles[playercharacter.currentTile].setIcon(playercharacter.sprite);
 
 			gamewindow.validate();
 			gamewindow.repaint();
@@ -282,8 +279,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 		}
 		
 		if(string == "Demo Room 2"){
-			currentRoom = "Demo Room 2";
-			
 			for(int i = 0; i < worldTiles.length; i++){
 				worldTiles[i].setIcon(blackTile);
 				worldTiles[i].setText("None");
@@ -318,11 +313,8 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			worldTiles[94].setText("Monster");
 			worldTiles[94].setIcon(zombieWorldTile);
 			
-			worldTiles[659].setText("Monster");
-			worldTiles[659].setIcon(zombieWorldTile);
-			
-			playercharacter.currentTile = 57;
-			worldTiles[playercharacter.currentTile].setIcon(playercharacter.sprite);
+			worldTiles[670].setText("Monster");
+			worldTiles[670].setIcon(zombieWorldTile);
 		}
 
 	}
@@ -377,21 +369,16 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile - 40].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile - 40;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Monster"){
+				if(worldTiles[playercharacter.currentTile - 40].getText() == "Monster"){
 					new battleWindow("demo", playercharacter);
 				}
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Door"){
+				if(worldTiles[playercharacter.currentTile - 40].getText() == "Door"){
 					if(currentRoom == "Demo Room 1"){
 						generateRoom("Demo Room 2");				
-					}
-					
-					else if(currentRoom == "Demo Room 2"){
-						generateRoom("Demo Room 1");				
 					}
 				}
 			}
@@ -402,21 +389,16 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile + 40].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile + 40;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Monster"){
+				if(worldTiles[playercharacter.currentTile + 40].getText() == "Monster"){
 					new battleWindow("demo", playercharacter);
 				}
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Door"){
+				if(worldTiles[playercharacter.currentTile - 40].getText() == "Door"){
 					if(currentRoom == "Demo Room 1"){
 						generateRoom("Demo Room 2");				
-					}
-					
-					else if(currentRoom == "Demo Room 2"){
-						generateRoom("Demo Room 1");				
 					}
 				}
 			}
@@ -425,21 +407,16 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile - 1].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile - 1;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Monster"){
+				if(worldTiles[playercharacter.currentTile - 1].getText() == "Monster"){
 					new battleWindow("demo", playercharacter);
 				}
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Door"){
+				if(worldTiles[playercharacter.currentTile - 1].getText() == "Door"){
 					if(currentRoom == "Demo Room 1"){
 						generateRoom("Demo Room 2");				
-					}
-					
-					else if(currentRoom == "Demo Room 2"){
-						generateRoom("Demo Room 1");				
 					}
 				}
 			}
@@ -448,21 +425,16 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile + 1].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile + 1;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Monster"){
+				if(worldTiles[playercharacter.currentTile + 1].getText() == "Monster"){
 					new battleWindow("demo", playercharacter);
 				}
 
-				if(worldTiles[playercharacter.currentTile].getText() == "Door"){
+				if(worldTiles[playercharacter.currentTile - 40].getText() == "Door"){
 					if(currentRoom == "Demo Room 1"){
 						generateRoom("Demo Room 2");				
-					}
-					
-					else if(currentRoom == "Demo Room 2"){
-						generateRoom("Demo Room 1");				
 					}
 				}
 			}

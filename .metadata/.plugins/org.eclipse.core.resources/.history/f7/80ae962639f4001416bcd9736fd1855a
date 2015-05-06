@@ -107,7 +107,6 @@ public class battleWindow extends JFrame implements ActionListener {
 	private void monsterTurn(Monster monster2) {
 		double damage = calculateMonsterDamage(monster, player);
 		player.health = (int) (player.health - damage);
-		playerHealth.setText("HP: " + player.health);
 		combatStatus.append("\nMonster did " + (int)damage + " damage!");
 		
 	}

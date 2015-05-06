@@ -318,8 +318,8 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 			worldTiles[94].setText("Monster");
 			worldTiles[94].setIcon(zombieWorldTile);
 			
-			worldTiles[659].setText("Monster");
-			worldTiles[659].setIcon(zombieWorldTile);
+			worldTiles[660].setText("Monster");
+			worldTiles[660].setIcon(zombieWorldTile);
 			
 			playercharacter.currentTile = 57;
 			worldTiles[playercharacter.currentTile].setIcon(playercharacter.sprite);
@@ -377,7 +377,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile - 40].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile - 40;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -390,7 +389,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 						generateRoom("Demo Room 2");				
 					}
 					
-					else if(currentRoom == "Demo Room 2"){
+					if(currentRoom == "Demo Room 2"){
 						generateRoom("Demo Room 1");				
 					}
 				}
@@ -402,7 +401,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile + 40].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile + 40;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -415,7 +413,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 						generateRoom("Demo Room 2");				
 					}
 					
-					else if(currentRoom == "Demo Room 2"){
+					if(currentRoom == "Demo Room 2"){
 						generateRoom("Demo Room 1");				
 					}
 				}
@@ -425,7 +423,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile - 1].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile - 1;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -438,7 +435,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 						generateRoom("Demo Room 2");				
 					}
 					
-					else if(currentRoom == "Demo Room 2"){
+					if(currentRoom == "Demo Room 2"){
 						generateRoom("Demo Room 1");				
 					}
 				}
@@ -448,7 +445,6 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 				worldTiles[playercharacter.currentTile].setIcon(stoneTile);
 				worldTiles[playercharacter.currentTile + 1].setIcon(playercharacter.sprite);
 				playercharacter.currentTile = playercharacter.currentTile + 1;
-				healthLabel.setText("HP: " + playercharacter.health);
 				gamewindow.validate();
 				gamewindow.repaint();
 
@@ -461,7 +457,7 @@ public class mainGameWindow extends JFrame implements ActionListener, KeyListene
 						generateRoom("Demo Room 2");				
 					}
 					
-					else if(currentRoom == "Demo Room 2"){
+					if(currentRoom == "Demo Room 2"){
 						generateRoom("Demo Room 1");				
 					}
 				}

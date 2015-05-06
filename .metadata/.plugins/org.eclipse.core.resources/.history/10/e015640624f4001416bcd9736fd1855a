@@ -53,8 +53,7 @@ public class battleWindow extends JFrame implements ActionListener {
 		playerStatusPanel.add(playerResource);
 		
 		monsterImage.setIcon(monster.combatSprite);
-		monsterImage.setAlignmentY(CENTER_ALIGNMENT);
-		
+
 		attackButton.addActionListener(this);
 		itemsButton.addActionListener(this);
 		escapeButton.addActionListener(this);
@@ -107,7 +106,6 @@ public class battleWindow extends JFrame implements ActionListener {
 	private void monsterTurn(Monster monster2) {
 		double damage = calculateMonsterDamage(monster, player);
 		player.health = (int) (player.health - damage);
-		playerHealth.setText("HP: " + player.health);
 		combatStatus.append("\nMonster did " + (int)damage + " damage!");
 		
 	}

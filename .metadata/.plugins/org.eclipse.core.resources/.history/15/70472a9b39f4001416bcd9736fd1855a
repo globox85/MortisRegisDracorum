@@ -8,7 +8,7 @@ public class Monster {
 
 	public void setMonsterType(String string) {
 		if(string == "zombie"){
-			health = 80;
+			health = 40;
 			defense = 10;
 			attack = 15;
 			combatSprite = new ImageIcon("graphics/sprites/zombie_combat_sprite.png");
